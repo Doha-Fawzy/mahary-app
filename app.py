@@ -223,10 +223,10 @@ def analyze_and_report(child_name, child_answers, parent_answers):
 اكتب بأسلوب احترافي ودافئ."""
 
     completion = groq_client.chat.completions.create(
-        model="deepseek-r1-distill-llama-70b-specdec",
+        model="qwen/qwen3.8-27b",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.6,
-        max_tokens=2000
+        max_tokens=800
     )
     return completion.choices[0].message.content
 
