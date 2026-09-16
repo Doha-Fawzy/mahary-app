@@ -379,7 +379,7 @@ elif st.session_state.page == "parent_chat":
                     })
                     
                     # Get Gemini response
-                    model = genai.GenerativeModel('gemini-3.6-flash')
+                    model = genai.GenerativeModel('gemini-3.5-flash-lite')
                     next_q_idx = q_idx + 1
                     
                     if next_q_idx < len(parent_questions_open):
