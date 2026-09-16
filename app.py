@@ -60,49 +60,114 @@ if "report" not in st.session_state:
     st.session_state.report = ""
 
 # ==================== QUESTIONS ====================
-child_questions = [
+child_questions = child_questions = [
     {
-        "question": "لو فضلت في البيت يوم كامل، إيه أول حاجة هتعملها؟",
-        "options": ["🎮 ألعب ألعاب فيديو", "📚 أقرأ أو أرسم", "🏃 أنزل ألعب برة", "🎬 أتفرج على يوتيوب"],
-        "trait": "preferred_activity"
+        "question": "لما المدرس بيشرح درس جديد، إيه اللي بيساعدك تفهم أكتر؟",
+        "options": [
+            "📊 لما بيرسم على السبورة أو بيوري صور",
+            "👂 لما بيشرح بصوته وأسمعه كويس",
+            "✋ لما أجرب بنفسي أو أعمل حاجة بإيدي",
+            "📖 لما أقرأ في الكتاب وأكتب ملاحظات"
+        ],
+        "trait": "learning_modality"
     },
     {
-        "question": "لما المدرس بيشرح حاجة جديدة، بتفهم أكتر لما...",
-        "options": ["👁️ أشوف صور أو رسومات", "👂 أسمع الشرح كويس", "✋ أعمل التجربة بنفسي", "📝 أكتب وأذاكر"],
-        "trait": "learning_style"
+        "question": "لما بتحل واجب وتلاقي سؤال صعب مش فاهمه، بتعمل إيه؟",
+        "options": [
+            "🙋 بسأل أمي أو أبويا على طول",
+            "🤔 بحاول أفكر فيه لوحدي الأول",
+            "📱 بدور على فيديو يشرحه",
+            "😶 بسيبه وأكمل اللي بعده"
+        ],
+        "trait": "help_seeking_behavior"
     },
     {
-        "question": "لما بتذاكر، بتحب يكون...",
-        "options": ["🤫 هادي ومفيش ضوضاء", "🎵 فيه موسيقى خفيفة", "👥 مع أصحاب أو أهل", "🌳 في مكان مفتوح"],
+        "question": "لما بتذاكر وحاجة تشتت تركيزك، بتعمل إيه؟",
+        "options": [
+            "😤 بزعل وأقوم من المذاكرة",
+            "🎧 بحط سماعات وأكمل",
+            "🔄 بخد راحة صغيرة وأرجع",
+            "📍 بحاول أركز تاني من غير ما أوقف"
+        ],
+        "trait": "self_regulation"
+    },
+    {
+        "question": "لما تتعلم حاجة جديدة وتحس إنك فهمتها، بتعمل إيه؟",
+        "options": [
+            "💬 بشرحها لصاحبي أو أخويا",
+            "📝 بكتبها في ورقة بأسلوبي أنا",
+            "🎯 بحل تمارين عليها على طول",
+            "😊 بحس بفرحة وأكمل الموضوع الجاي"
+        ],
+        "trait": "comprehension_confirmation"
+    },
+    {
+        "question": "لو قدرت تختار، تذاكر إزاي؟",
+        "options": [
+            "🤫 لوحدي في أوضة هادية",
+            "👥 مع صاحب أو أخ أو أخت",
+            "🎵 مع موسيقى خفيفة في الخلفية",
+            "🌳 في مكان مفتوح زي الجنينة أو الشرفة"
+        ],
         "trait": "learning_environment"
     },
     {
-        "question": "لو مش فاهم حاجة في المدرسة، بتعمل إيه؟",
-        "options": ["🙋 أسأل المدرس على طول", "📖 أرجع للكتاب لوحدي", "👫 أسأل صاحبي", "🎥 أدور على فيديو يشرح"],
-        "trait": "help_seeking"
+        "question": "لما بتحفظ معلومة مهمة، بتعمل إيه عشان متنساش؟",
+        "options": [
+            "🖼️ بعمل رسمة أو جدول في دماغي",
+            "🔊 برددها بصوت عالي أكتر من مرة",
+            "✍️ بكتبها أكتر من مرة",
+            "🎬 بربطها بحاجة حصلت معايا في حياتي"
+        ],
+        "trait": "memory_strategy"
     },
     {
-        "question": "إيه اللي بيخليك تحس إنك تعلمت حاجة صح؟",
-        "options": ["⭐ لما أعمل التمرين صح", "💬 لما أشرحها لحد تاني", "🎯 لما أستخدمها في حياتي", "📊 لما أشوف درجتي كويسة"],
-        "trait": "success_indicator"
+        "question": "لما المدرس يقول: 'مين عارف الإجابة؟' وانت عارفها، بتعمل إيه؟",
+        "options": [
+            "🙋 برفع إيدي على طول وأجاوب",
+            "😶 بستنى حد تاني يجاوب الأول",
+            "😅 بتمنى ميسألنيش، خايف أغلط",
+            "📝 بكتب الإجابة في ورقتي بس"
+        ],
+        "trait": "classroom_participation"
+    },
+    {
+        "question": "إيه اللي بيخليك تحب مادة أكتر من التانية؟",
+        "options": [
+            "🎨 لما فيها رسم أو ألوان أو صور",
+            "🗣️ لما المدرس بيحكي قصص وأمثلة",
+            "🔬 لما فيها تجارب أو أنشطة عملية",
+            "📚 لما الكتاب واضح ومرتب وسهل"
+        ],
+        "trait": "subject_engagement"
     }
 ]
 
-parent_questions = [
+parent_questions_open = [
     {
-        "question": f"طفلك لما بيتعلم حاجة جديدة، بيحب أكتر...",
-        "options": ["يشوف فيديو أو صور", "يسمع شرح", "يجرب بنفسه", "يقرأ ويكتب"],
-        "trait": "parent_learning_obs"
+        "question": "صفيلي طفلك وهو بيذاكر في البيت — إيه اللي بيحصل عادةً؟",
+        "hint": "مثلاً: بيحتاج مساعدة؟ بيذاكر لوحده؟ بيزعل بسرعة؟",
+        "trait": "homework_behavior"
     },
     {
-        "question": "لما بيواجه مشكلة في الواجب، أول حاجة بيعملها...",
-        "options": ["يسألك على طول", "يحاول يحلها لوحده", "يسأل أخوه أو صاحبه", "يترك الواجب لوقت تاني"],
-        "trait": "parent_problem_solving"
+        "question": "لما طفلك بيواجه حاجة صعبة ومش فاهمها، بيعمل إيه تحديداً؟",
+        "hint": "مثلاً: بيسألك؟ بيزعل ويوقف؟ بيحاول لوحده؟ بيدور على فيديو؟",
+        "trait": "problem_solving"
     },
     {
-        "question": "طفلك بيتذكر المعلومات أكتر لما...",
-        "options": ["يشوفها مكتوبة أو مصورة", "يسمعها أكتر من مرة", "يطبقها عملياً", "يكررها بصوت عالي"],
-        "trait": "parent_memory_obs"
+        "question": "إيه المواقف اللي بتلاحظ فيها إن طفلك بيتعلم بسرعة وبفرحة؟",
+        "hint": "فكري في مواد معينة، أنشطة، أو مواقف في البيت",
+        "trait": "peak_learning"
+    },
+    {
+        "question": "إيه اللي بيعمله طفلك لما حد يشرحله حاجة جديدة؟",
+        "hint": "مثلاً: بيسأل أسئلة؟ بيسمع بصمت؟ بيجرب على طول؟ بيحتاج يتكرر؟",
+        "trait": "receiving_info"
+    },
+    {
+        "question": "في رأيك إيه أكبر تحدي بيواجه طفلك في المذاكرة دلوقتي؟",
+        "hint": "ممكن تكون صعوبة في التركيز، الخجل، الخوف من الغلط، أو حاجة تانية",
+        "trait": "main_challenge"
     }
 ]
 
@@ -119,38 +184,49 @@ def ask_gemini(child_name, question, answer):
     response = model.generate_content(prompt)
     return response.text
 
-# ==================== DEEPSEEK ANALYZER ====================
+# ==================== Qwen ANALYZER ====================
 def analyze_and_report(child_name, child_answers, parent_answers):
     child_data = "\n".join([f"- {q['trait']}: {a}" 
                              for q, a in zip(child_questions, child_answers)])
-    parent_data = "\n".join([f"- {q['trait']}: {a}" 
-                              for q, a in zip(parent_questions, parent_answers)])
+    
+    # Parent answers now have more detail
+    parent_data = ""
+    if st.session_state.get("parent_collected"):
+        parent_data = "\n".join([
+            f"- {item['trait']}:\n  السؤال: {item['question']}\n  الإجابة: {item['answer']}"
+            for item in st.session_state.parent_collected
+        ])
+    else:
+        parent_data = "\n".join([f"- ملاحظة {i+1}: {a}" 
+                                  for i, a in enumerate(parent_answers)])
     
     prompt = f"""أنت خبير تعليمي متخصص في أساليب التعلم للأطفال.
 
 بيانات الطفل: {child_name}
 
-إجابات الطفل:
+إجابات الطفل (من خلال الأنشطة):
 {child_data}
 
-ملاحظات الوالدين:
+ملاحظات الوالدين التفصيلية:
 {parent_data}
 
 اكتب تقرير تعليمي شامل باللغة العربية يتضمن:
 1. **ملخص شخصية {child_name} التعليمية**
-2. **أسلوب التعلم الأساسي** (مع نسبة مئوية لكل أسلوب: بصري/سمعي/حركي/قرائي)
-3. **البيئة المثالية للمذاكرة**
-4. **نقاط القوة**
-5. **توصيات عملية للوالدين والمعلمين** (5 نقاط على الأقل)
-6. **تنبيه:** هذا التقرير لأغراض تعليمية فقط وليس تشخيصاً نفسياً
+2. **أسلوب التعلم الأساسي** (مع نسبة مئوية: بصري/سمعي/حركي/قرائي)
+3. **نقاط القوة التي ظهرت**
+4. **التحديات المحتملة**
+5. **البيئة المثالية للمذاكرة**
+6. **توصيات عملية للوالدين** (5 نقاط)
+7. **توصيات للمعلمين** (3 نقاط)
+8. **تنبيه:** هذا التقرير لأغراض تعليمية فقط وليس تشخيصاً نفسياً أو طبياً
 
-اكتب التقرير بشكل احترافي وواضح."""
+اكتب بأسلوب احترافي ودافئ."""
 
     completion = groq_client.chat.completions.create(
-        model="qwen/qwen3.8-27b",
+        model="deepseek-r1-distill-llama-70b-specdec",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.6,
-        max_tokens=900
+        max_tokens=2000
     )
     return completion.choices[0].message.content
 
@@ -233,27 +309,118 @@ elif st.session_state.page == "child_chat":
 # PARENT CHAT PAGE
 elif st.session_state.page == "parent_chat":
     name = st.session_state.child_name
-    q_idx = st.session_state.question_index
     
     st.markdown(f"<h2>👨‍👩‍👧 صفحة الوالدين</h2>", unsafe_allow_html=True)
-    st.markdown(f"<p>شكراً! دلوقتي محتاجين مساعدتك عشان نكمل تقرير <b>{name}</b></p>", 
-               unsafe_allow_html=True)
+    st.markdown(f"""
+    <div style='background:#1a3a1a; padding:15px; border-radius:10px; margin-bottom:20px'>
+    <p style='color:#90EE90; font-size:16px'>
+    أنتم اللي بتعرفوا <b>{name}</b> أكتر من أي حد 💚<br>
+    إجاباتكم هتساعدنا نعمل تقرير دقيق وحقيقي ليه
+    </p>
+    </div>
+    """, unsafe_allow_html=True)
     
-    progress = q_idx / len(parent_questions)
-    st.progress(progress)
-    st.caption(f"السؤال {q_idx + 1} من {len(parent_questions)}")
+    # Initialize parent chat history
+    if "parent_chat_history" not in st.session_state:
+        st.session_state.parent_chat_history = []
+    if "parent_q_index" not in st.session_state:
+        st.session_state.parent_q_index = 0
+    if "parent_collected" not in st.session_state:
+        st.session_state.parent_collected = []
+
+    q_idx = st.session_state.parent_q_index
     
-    if q_idx < len(parent_questions):
-        current_q = parent_questions[q_idx]
-        st.markdown(f"<h3>{current_q['question']}</h3>", unsafe_allow_html=True)
+    # Progress
+    st.progress(q_idx / len(parent_questions_open))
+    st.caption(f"السؤال {q_idx + 1} من {len(parent_questions_open)}")
+    
+    # Show chat history
+    for msg in st.session_state.parent_chat_history:
+        if msg["role"] == "assistant":
+            st.markdown(f"<div class='chat-msg'>🤖 {msg['content']}</div>", 
+                       unsafe_allow_html=True)
+        else:
+            st.markdown(f"<div style='background:#2d4a2d; padding:12px; border-radius:10px; margin:8px 0; text-align:right'>👤 {msg['content']}</div>", 
+                       unsafe_allow_html=True)
+    
+    # Show current question if not done
+    if q_idx < len(parent_questions_open):
+        current_q = parent_questions_open[q_idx]
         
-        for i, option in enumerate(current_q["options"]):
-            if st.button(option, key=f"parent_opt{i}_{q_idx}"):
-                st.session_state.parent_answers.append(option)
-                st.session_state.question_index += 1
-                if st.session_state.question_index >= len(parent_questions):
-                    st.session_state.page = "report"
-                st.rerun()
+        # Show question if first time
+        if not st.session_state.parent_chat_history or \
+           st.session_state.parent_chat_history[-1]["role"] == "user":
+            st.markdown(f"<div class='chat-msg'>🤖 {current_q['question']}<br><small style='color:#aaa'>💡 {current_q['hint']}</small></div>", 
+                       unsafe_allow_html=True)
+        
+        # Text input for parent
+        parent_input = st.text_area(
+            "إجابتك:",
+            placeholder="اكتب هنا بحرية...",
+            height=100,
+            key=f"parent_input_{q_idx}"
+        )
+        
+        col1, col2 = st.columns([3,1])
+        with col2:
+            if st.button("إرسال ➤", use_container_width=True):
+                if parent_input.strip():
+                    # Save answer
+                    st.session_state.parent_collected.append({
+                        "trait": current_q["trait"],
+                        "question": current_q["question"],
+                        "answer": parent_input
+                    })
+                    
+                    # Add to chat history
+                    st.session_state.parent_chat_history.append({
+                        "role": "user", 
+                        "content": parent_input
+                    })
+                    
+                    # Get Gemini response
+                    model = genai.GenerativeModel('gemini-3.6-flash')
+                    next_q_idx = q_idx + 1
+                    
+                    if next_q_idx < len(parent_questions_open):
+                        next_q = parent_questions_open[next_q_idx]
+                        prompt = f"""أنت مهاري، مساعد تعليمي ذكي.
+الوالد يخبرك عن طفله {name}.
+سؤالك كان: {current_q['question']}
+إجابة الوالد: {parent_input}
+
+اكتب رد قصير (جملة واحدة فقط) تشكر فيه الوالد وتنتقل للسؤال التالي.
+ثم اسأل هذا السؤال: {next_q['question']}
+التلميح: {next_q['hint']}
+
+اكتب بالعربي فقط، بأسلوب دافئ وطبيعي."""
+                    else:
+                        prompt = f"""أنت مهاري، مساعد تعليمي ذكي.
+الوالد أجاب على آخر سؤال عن طفله {name}.
+إجابته: {parent_input}
+
+اكتب رسالة شكر قصيرة (جملتين) وأخبره إن مهاري دلوقتي جاهز يحلل المعلومات ويعمل التقرير.
+اكتب بالعربي فقط، بأسلوب دافئ."""
+                    
+                    response = model.generate_content(prompt)
+                    
+                    st.session_state.parent_chat_history.append({
+                        "role": "assistant",
+                        "content": response.text
+                    })
+                    
+                    st.session_state.parent_q_index += 1
+                    
+                    if st.session_state.parent_q_index >= len(parent_questions_open):
+                        # Convert collected answers to parent_answers format
+                        st.session_state.parent_answers = [
+                            item["answer"] for item in st.session_state.parent_collected
+                        ]
+                        st.session_state.page = "report"
+                    
+                    st.rerun()
+                else:
+                    st.warning("من فضلك اكتب إجابتك الأول!")
 
 # REPORT PAGE
 elif st.session_state.page == "report":
